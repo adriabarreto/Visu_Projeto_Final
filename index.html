@@ -2,7 +2,12 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Estamos Vivendo Tempos de Paz?</title>
+  <title>Conflito vs Paz</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <style>
     /* 1. MOTOR DE ROLAGEM (PÁGINA DE LIVRO) */
     html {
@@ -14,14 +19,7 @@
     :root {
       --bg-light: #ffffff;
       --bg-gray: #f8f9fa;
-      --accent: #d63031; /* Voltei para o vermelho, mas pode mudar para o verde se preferir */
-    }
-
-    body { 
-      margin: 0; 
-      font-family: 'Inter', sans-serif; 
-      background: var(--bg-light); 
-      color: #2d3436;
+      --accent: #921f22; /* Voltei para o vermelho, mas pode mudar para o verde se preferir */
     }
 
     /* 2. BARRA DE FILTROS (FIXA) */
@@ -147,95 +145,116 @@
   </style>
 </head>
 
-<body>
+<body class="pagina-hero">
+  <section class="hero">
+    <div class="container">
+      <h1>ESTAMOS VIVENDO EM TEMPOS DE PAZ?</h1>
+      <div class="scroll-indicator">↓</div>
+    </div>
+  </section>
+</body>
 
+<body class="pagina-vis">
   <!-- Botões do filtro -->
-
   <div class="sticky-controls">
     <div id="observablehq-viewof-periodo_selecionado-ca2ec83e"></div>
     <div id="observablehq-viewof-métrica_ativa-ca2ec83e"></div>
     <div id="observablehq-viewof-tipo_ativo-ca2ec83e"></div>
   </div>
 
-  <section>
-    <div style="text-align: center; max-width: 800px;">
-      <h1 style="font-size: 3.5rem; margin-bottom: 10px; color: var(--accent);">Estamos Vivendo Tempos de Paz?</h1>
-      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
-    </div>
-  </section>
-
   <!-- Seção 1 - Abertura -->
+  <section class="intro">
+    <div class="container">
+      <h2>A Ilusão da Paz Perpétua</h2>
 
-  <section>
-    <div style="text-align: center; max-width: 800px;">
-      <h2 style="font-weight: 300; color: #636e72;">A Ilusão da Paz Perpétua</h2>
-      <p style="font-size: 1.25rem; margin-top: 30px; line-height: 1.6;">
-        1989. O Muro de Berlim caiu e, com ele, a promessa de um mundo unificado. O fim da Guerra Fria trouxe a expectativa de que a diplomacia substituiria definitivamente os mísseis. Mas os números contam uma história mais sombria...
+      <p>
+        1989. O Muro de Berlim caiu e, com ele, a promessa de um mundo unificado.
+        O fim da Guerra Fria trouxe a expectativa de que a diplomacia substituiria
+        definitivamente os mísseis. Mas os números contam uma história mais sombria...
       </p>
-      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
+
+      <div class="scroll-indicator">↓</div>
     </div>
   </section>
 
-   <!-- Seção 2 - Grafico Conflitos Totais -->
+  <!-- Seção 2 - Grafico Conflitos Totais -->
   <section>
-    <div class="content-wrapper">
-      <div class="text-side">
-        <h2>A violência continua por todo o globo</h2>
-        <p>Note como a linha não desaparece após 1989; ela oscila e, recentemente, volta a subir, desafiando a ideia de paz absoluta.</p>
-      </div>
-      <div class="viz-side">
+      <div class="content-wrapper">
+      <div class="chart-box">
         <div id="observablehq-grafOne-d0f5227e"></div>
+        <div id="observablehq-grafTwo-f9d10b62"></div>
       </div>
-    </div>
-  </section>
 
-   <!-- Seção 3 - Conflitos por tipo -->
- <section>
-  <div class="content-wrapper">
-    <div class="text-side">
-      <h2>A Violência mudou de DNA</h2>
-      <p>A guerra moderna se fragmentou. Se antes o estado era o único protagonista, hoje vemos a ascensão de organizações criminosas e grupos extremistas.</p>
-    </div>
-    
-    <div class="stacked-viz">
-      <div id="observablehq-grafTwo-f9d10b62"></div>
-      <div id="observablehq-grafThree-5d1d9318"></div>
-    </div>
-  </div>
-</section>
-
- 
-<!-- Seção 4 - Conflitos com mais mortes -->
-
-  <section>
-    <div class="content-wrapper">
-      <div class="text-side">
-        <h2>A Anatomia da Fatalidade</h2>
+      <div class="text-box">
+        <h3>A violência continua por todo o globo</h3>
         <p>
-          Onde o custo humano é mais alto? Não se trata apenas da quantidade de batalhas, mas da sua letalidade. Analisar a média de mortes e o tipo de evento nos permite entender se estamos diante de combates militares tradicionais ou de ataques sistemáticos contra populações indefesas.
+          Note como a linha não desaparece após 1989; ela oscila e,
+          recentemente, volta a subir, desafiando a ideia de paz absoluta.
         </p>
       </div>
-      <div class="stacked-viz">
+    </div>
+  </section>
+
+<!-- Seção 3 - Conflitos por tipo -->
+  <section>
+    <div class="content-wrapper">
+
+      <div class="chart-box">
+        <div id="observablehq-grafTwo-f9d10b62"></div>
+        <div id="observablehq-grafThree-5d1d9318"></div>
+      </div>
+
+      <div class="text-box">
+        <h2>A Violência mudou de DNA</h2>
+        <p>
+          A guerra moderna se fragmentou. Se antes o estado era o único protagonista, 
+          hoje vemos a ascensão de organizações criminosas e grupos extremistas.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+<!-- Seção 4 - Conflitos com mais mortes -->
+  <section>
+    <div class="content-wrapper">
+
+      <div class="chart-box">
         <div id="observablehq-grafFour-115d5d63"></div> 
         <div id="observablehq-grafFive-115d5d63"></div>
       </div>
-    </div>
-  </section>
 
-   <!-- Mapa -->
+      <div class="text-box">
+        <h2>A Anatomia da Fatalidade</h2>
+        <p>
+          Onde o custo humano é mais alto? Não se trata apenas da quantidade de batalhas, 
+          mas da sua letalidade. Analisar a média de mortes e o tipo de evento nos permite
+          entender se estamos diante de combates militares tradicionais ou de ataques sistemáticos 
+          contra populações indefesas.
+        </p>
+      </div>
+
+    </div>
+</section>
+
+
+<!-- Mapa -->
 <section class="full-width-section">
   <div class="content-wrapper">
-    
-    <div class="text-side">
-      <h2>Onde o mundo sangra</h2>
-      <p>A distribuição geográfica revela os focos de tensão, enquanto os dados abaixo detalham a intensidade dessas ocorrências.</p>
-      <div id="observablehq-textMap-ca2ec83e"></div>
+
+    <div class="chart-box">
+      <div id="observablehq-grafSix-ca2ec83e"></div>
+      <div id="observablehq-grafSeven-adf0c5a8"></div>
     </div>
 
-    <div class="viz-side">
-      <div id="observablehq-grafSix-ca2ec83e"></div>
-      
-      <div id="observablehq-grafSeven-adf0c5a8"></div>
+    <div class="text-box">
+      <h2>Onde o mundo sangra</h2>
+      <p>
+        A distribuição geográfica revela os focos de tensão, 
+        enquanto os dados abaixo detalham a intensidade dessas ocorrências.
+      </p>
+      <div id="observablehq-textMap-ca2ec83e"></div>
     </div>
 
   </div>
@@ -243,45 +262,59 @@
 
 <!-- Nuvem -->
 <section>
-    <div class="content-wrapper">
-      <div class="text-side">
-        <h2>A Face da Violência</h2>
-        <p>Quem são os arquitetos dessa desordem? Por trás das siglas e nomes, existe uma rede complexa de alianças e rivalidades. A guerra hoje é um ecossistema onde estados e atores não-estatais se enfrentam e se alimentam mutuamente.</p>
-      </div>
-      <div class="viz-side">
-        <div id="observablehq-grafEigh-7db2f758"></div>
-      </div>
+  <div class="content-wrapper">
+
+    <div class="text-side">
+      <h2>A Face da Violência</h2>
+      <p>
+        Quem são os arquitetos dessa desordem?
+        Por trás das siglas e nomes, existe uma rede complexa de alianças e rivalidades. 
+        A guerra hoje é um ecossistema onde estados e atores não-estatais se enfrentam 
+        e se alimentam mutuamente.
+      </p>
     </div>
-  </section>
+
+    <div class="viz-side">
+      <div id="observablehq-grafEigh-7db2f758"></div>
+    </div>
 
   </div>
 </section>
 
 <!-- Rede -->
-  <section>
-    <div class="content-wrapper">
-      <div class="text-side">
-        <h2>Protagonistas do Caos</h2>
-        <p>Quem são os grupos por trás desses registros? Esta nuvem destaca os atores com maior impacto no período selecionado.</p>
-      </div>
-      <div class="viz-side">
-        <div id="observablehq-grafNine-37a85f5f"></div>
-      </div>
+<section>
+  <div class="content-wrapper">
+  
+    <div class="viz-side">
+      <div id="observablehq-grafNine-37a85f5f"></div>
     </div>
-  </section>
+
+    <div class="text-side">
+      <h2>Protagonistas do Caos</h2>
+      <p>
+        Quem são os grupos por trás desses registros? 
+        Esta nuvem destaca os atores com maior impacto no período selecionado.
+      </p>
+    </div>
+
+  </div>
+</section>
 
 <!-- fechamento -->
+  <section class="intro">
+  <div class="intro-content">
+    <h2 class="intro-subtitle">Afinal, estamos em Paz?</h2>
 
-  <section>
-    <div style="text-align: center; max-width: 800px;">
-      <h2 style="font-weight: 300; color: #636e72;">Afinal, estamos em Paz?</h2>
-      <p style="font-size: 1.25rem; margin-top: 30px; line-height: 1.6;">
-       A resposta curta é: depende da sua definição de paz. Se a paz é apenas a ausência de uma guerra mundial, os dados nos dão um conforto frágil. Mas se a paz é o direito de viver sem o medo da violência organizada, os últimos 35 anos mostram que falhamos.
-A violência não sumiu; ela se adaptou, tornou-se mais fluida e encontrou novas formas de se manifestar. Compreender esses dados não é apenas um exercício estatístico, é o primeiro passo para identificar onde a diplomacia e a intervenção humanitária são mais urgentes. O rastro da violência continua sendo escrito todos os dias.
-
-      </p>
-      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
-    </div>
+    <p class="intro-text">
+      A resposta curta é: depende da sua definição de paz. Se a paz é apenas a ausência de uma guerra mundial,
+      os dados nos dão um conforto frágil. Mas se a paz é o direito de viver sem o medo da violência organizada,
+      os últimos 35 anos mostram que falhamos.
+      A violência não sumiu; ela se adaptou, tornou-se mais fluida e encontrou novas formas de se manifestar.
+      Compreender esses dados não é apenas um exercício estatístico, é o primeiro passo para identificar onde a diplomacia
+      e a intervenção humanitária são mais urgentes.
+      O rastro da violência continua sendo escrito todos os dias.
+    </p>
+  </div>
   </section>
 
   <script type="module">
@@ -328,5 +361,4 @@ A violência não sumiu; ela se adaptou, tornou-se mais fluida e encontrou novas
     }
   </style>
 </body>
-<div id="custom-d3-tooltip" style="position: fixed; display: none; background: white; border: 1px solid #ccc; padding: 10px; z-index: 2000; pointer-events: none; border-radius: 4px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); font-size: 12px; font-family: sans-serif;"></div>
 </html>

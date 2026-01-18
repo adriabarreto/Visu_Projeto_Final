@@ -1,0 +1,149 @@
+:root {
+    --bg-light: #ffffff;
+    --bg-gray: #f8f9fa;
+    --accent: #e63946; 
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0; 
+    background: var(--bg-light); 
+    color: #2d3436;
+}
+
+/* Seção principal */
+.hero {
+  min-height: 100vh;              /* ocupa a tela inteira */
+  display: flex;                  /* ativa flexbox */
+  justify-content: center;        /* centraliza horizontalmente */
+  align-items: center;            /* centraliza verticalmente */
+  text-align: center;
+}
+
+.hero h1 {
+  font-weight: 700; /* bold */
+}
+
+.pagina-hero .sticky-controls {
+  display: none;
+}
+
+/* Container do conteúdo */
+.container {
+  max-width: 800px;               /* limita a largura */
+  margin: 0 auto;                 /* centraliza na página */
+  padding: 0 20px;                /* respiro em telas pequenas */
+}
+
+/* Título principal */
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+  line-height: 1.2;              
+}
+
+.scroll-indicator {
+  margin-top: 50px;
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
+
+.pagina-vis .sticky-controls {
+  display: block;
+}
+
+/* Animação da seta */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Seção de introdução */
+.intro {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Container reutilizável */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Subtítulo */
+.intro h2 {
+  font-weight: 300;
+  color: #636e72;
+  font-size: 2rem;
+}
+
+/* Parágrafo introdutório */
+.intro p {
+  font-size: 1.25rem;
+  margin-top: 30px;
+  line-height: 1.6;
+  color: #2d3436;
+}
+.intro-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.intro-subtitle {
+  font-weight: 300;
+  color: #636e72;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  margin-top: 30px;
+  line-height: 1.6;
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%; 
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Card do gráfico */
+.chart-box {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Texto à direita */
+.text-box {
+  text-align: left;
+}
+
+.text-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.text-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2d3436;
+}
+
+
+
+
