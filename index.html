@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Estamos Vivendo Tempos de Paz?</title>
+  <style>
+    /* 1. MOTOR DE ROLAGEM (PÁGINA DE LIVRO) */
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    :root {
+      --bg-light: #ffffff;
+      --bg-gray: #f8f9fa;
+      --accent: #d63031; /* Voltei para o vermelho, mas pode mudar para o verde se preferir */
+    }
+
+    body { 
+      margin: 0; 
+      font-family: 'Inter', sans-serif; 
+      background: var(--bg-light); 
+      color: #2d3436;
+    }
+
+    /* 2. BARRA DE FILTROS (FIXA) */
+    .sticky-controls {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* 3. ESTRUTURA GERAL DAS SEÇÕES */
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      scroll-snap-align: start; 
+      scroll-snap-stop: always;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:nth-child(even) { background: var(--bg-gray); }
+
+    /* CONTAINER PADRÃO (Lado a Lado) */
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 400px 700px; 
+      gap: 50px;
+      justify-content: center; 
+      align-items: center;
+      width: 100%;
+    }
+
+    .text-side { width: 400px; }
+    .viz-side {
+      width: 700px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    /* 4. REFORMULAÇÃO TOTAL DA SEÇÃO DO MAPA */
+.full-width-section {
+  display: flex !important;
+  flex-direction: row !important; /* Força lado a lado */
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 5% !important; /* Margem de segurança nas laterais */
+}
+
+/* Ajuste para subir o conteúdo da seção do Mapa */
+/* Container do Mapa + Gráfico Inferior */
+.full-width-section .viz-side {
+  display: flex !important;
+  flex-direction: column !important; /* Empilha o mapa e o novo gráfico */
+  gap: 15px;                         /* Espaço entre eles */
+  justify-content: flex-start;
+  height: 80vh;                      /* Limita a altura total do conjunto */
+}
+
+/* Ajuste de altura para os dois elementos dividirem o espaço */
+#observablehq-grafSix-ca2ec83e { 
+  flex: 2; /* O mapa fica com a maior parte do espaço */
+  min-height: 0; 
+}
+
+/* Estilo para o novo gráfico abaixo do mapa */
+#observablehq-grafExtra-ca2ec83e { 
+  flex: 1; /* O gráfico de baixo fica menor que o mapa */
+  min-height: 0;
+  border-top: 1px solid #eee; /* Linha sutil para separar */
+  padding-top: 10px;
+
+}
+#observablehq-grafEigh-7db2f758 { 
+  min-height: 450px; 
+  width: 100%; 
+  display: block !important;
+}
+
+#observablehq-grafNine-37a85f5f { 
+  min-height: 450px; 
+  width: 100%; 
+  display: block !important;
+}
+
+
+    /* 5. RESPONSIVIDADE */
+    @media (max-width: 1100px) {
+      html { scroll-snap-type: none; }
+      .content-wrapper, .full-width-section .content-wrapper { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        height: auto;
+      }
+      section { height: auto; min-height: 100vh; padding: 100px 20px; }
+      .text-side, .viz-side { width: 100% !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Botões do filtro -->
+
+  <div class="sticky-controls">
+    <div id="observablehq-viewof-periodo_selecionado-ca2ec83e"></div>
+    <div id="observablehq-viewof-métrica_ativa-ca2ec83e"></div>
+    <div id="observablehq-viewof-tipo_ativo-ca2ec83e"></div>
+  </div>
+
+  <section>
+    <div style="text-align: center; max-width: 800px;">
+      <h1 style="font-size: 3.5rem; margin-bottom: 10px; color: var(--accent);">Estamos Vivendo Tempos de Paz?</h1>
+      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
+    </div>
+  </section>
+
+  <!-- Seção 1 - Abertura -->
+
+  <section>
+    <div style="text-align: center; max-width: 800px;">
+      <h2 style="font-weight: 300; color: #636e72;">A Ilusão da Paz Perpétua</h2>
+      <p style="font-size: 1.25rem; margin-top: 30px; line-height: 1.6;">
+        1989. O Muro de Berlim caiu e, com ele, a promessa de um mundo unificado. O fim da Guerra Fria trouxe a expectativa de que a diplomacia substituiria definitivamente os mísseis. Mas os números contam uma história mais sombria...
+      </p>
+      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
+    </div>
+  </section>
+
+   <!-- Seção 2 - Grafico Conflitos Totais -->
+  <section>
+    <div class="content-wrapper">
+      <div class="text-side">
+        <h2>A violência continua por todo o globo</h2>
+        <p>Note como a linha não desaparece após 1989; ela oscila e, recentemente, volta a subir, desafiando a ideia de paz absoluta.</p>
+      </div>
+      <div class="viz-side">
+        <div id="observablehq-grafOne-d0f5227e"></div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Seção 3 - Conflitos por tipo -->
+ <section>
+  <div class="content-wrapper">
+    <div class="text-side">
+      <h2>A Violência mudou de DNA</h2>
+      <p>A guerra moderna se fragmentou. Se antes o estado era o único protagonista, hoje vemos a ascensão de organizações criminosas e grupos extremistas.</p>
+    </div>
+    
+    <div class="stacked-viz">
+      <div id="observablehq-grafTwo-f9d10b62"></div>
+      <div id="observablehq-grafThree-5d1d9318"></div>
+    </div>
+  </div>
+</section>
+
+ 
+<!-- Seção 4 - Conflitos com mais mortes -->
+
+  <section>
+    <div class="content-wrapper">
+      <div class="text-side">
+        <h2>A Anatomia da Fatalidade</h2>
+        <p>
+          Onde o custo humano é mais alto? Não se trata apenas da quantidade de batalhas, mas da sua letalidade. Analisar a média de mortes e o tipo de evento nos permite entender se estamos diante de combates militares tradicionais ou de ataques sistemáticos contra populações indefesas.
+        </p>
+      </div>
+      <div class="stacked-viz">
+        <div id="observablehq-grafFour-115d5d63"></div> 
+        <div id="observablehq-grafFive-115d5d63"></div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Mapa -->
+<section class="full-width-section">
+  <div class="content-wrapper">
+    
+    <div class="text-side">
+      <h2>Onde o mundo sangra</h2>
+      <p>A distribuição geográfica revela os focos de tensão, enquanto os dados abaixo detalham a intensidade dessas ocorrências.</p>
+      <div id="observablehq-textMap-ca2ec83e"></div>
+    </div>
+
+    <div class="viz-side">
+      <div id="observablehq-grafSix-ca2ec83e"></div>
+      
+      <div id="observablehq-grafSeven-adf0c5a8"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Nuvem -->
+<section>
+    <div class="content-wrapper">
+      <div class="text-side">
+        <h2>A Face da Violência</h2>
+        <p>Quem são os arquitetos dessa desordem? Por trás das siglas e nomes, existe uma rede complexa de alianças e rivalidades. A guerra hoje é um ecossistema onde estados e atores não-estatais se enfrentam e se alimentam mutuamente.</p>
+      </div>
+      <div class="viz-side">
+        <div id="observablehq-grafEigh-7db2f758"></div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+</section>
+
+<!-- Rede -->
+  <section>
+    <div class="content-wrapper">
+      <div class="text-side">
+        <h2>Protagonistas do Caos</h2>
+        <p>Quem são os grupos por trás desses registros? Esta nuvem destaca os atores com maior impacto no período selecionado.</p>
+      </div>
+      <div class="viz-side">
+        <div id="observablehq-grafNine-37a85f5f"></div>
+      </div>
+    </div>
+  </section>
+
+<!-- fechamento -->
+
+  <section>
+    <div style="text-align: center; max-width: 800px;">
+      <h2 style="font-weight: 300; color: #636e72;">Afinal, estamos em Paz?</h2>
+      <p style="font-size: 1.25rem; margin-top: 30px; line-height: 1.6;">
+       A resposta curta é: depende da sua definição de paz. Se a paz é apenas a ausência de uma guerra mundial, os dados nos dão um conforto frágil. Mas se a paz é o direito de viver sem o medo da violência organizada, os últimos 35 anos mostram que falhamos.
+A violência não sumiu; ela se adaptou, tornou-se mais fluida e encontrou novas formas de se manifestar. Compreender esses dados não é apenas um exercício estatístico, é o primeiro passo para identificar onde a diplomacia e a intervenção humanitária são mais urgentes. O rastro da violência continua sendo escrito todos os dias.
+
+      </p>
+      <div style="margin-top: 50px; font-size: 2rem; animation: bounce 2s infinite;">↓</div>
+    </div>
+  </section>
+
+  <script type="module">
+    import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+    import define from "https://api.observablehq.com/d/bae91f33eae7b8be.js?v=4";
+
+    const runtime = new Runtime();
+    runtime.module(define, name => {
+      // Inputs
+      if (name === "viewof periodo_selecionado") return new Inspector(document.querySelector("#observablehq-viewof-periodo_selecionado-ca2ec83e"));
+      if (name === "viewof métrica_ativa") return new Inspector(document.querySelector("#observablehq-viewof-métrica_ativa-ca2ec83e"));
+      if (name === "viewof tipo_ativo") return new Inspector(document.querySelector("#observablehq-viewof-tipo_ativo-ca2ec83e"));
+      
+      // Gráficos e Textos
+      if (name === "grafSix") return new Inspector(document.querySelector("#observablehq-grafSix-ca2ec83e"));
+      if (name === "textMap") return new Inspector(document.querySelector("#observablehq-textMap-ca2ec83e"));
+      if (name === "grafSeven") return new Inspector(document.querySelector("#observablehq-grafSeven-adf0c5a8"));
+      if (name === "grafEigh") return new Inspector(document.querySelector("#observablehq-grafEigh-7db2f758"));
+      if (name === "grafOne") return new Inspector(document.querySelector("#observablehq-grafOne-d0f5227e"));
+      if (name === "grafTwo") return new Inspector(document.querySelector("#observablehq-grafTwo-f9d10b62"));
+      if (name === "grafThree") return new Inspector(document.querySelector("#observablehq-grafThree-5d1d9318"));
+      if (name === "grafFour") return new Inspector(document.querySelector("#observablehq-grafFour-115d5d63"));
+      if (name === "grafFive") return new Inspector(document.querySelector("#observablehq-grafFive-115d5d63"));
+      if (name === "grafNine") return new Inspector(document.querySelector("#observablehq-grafNine-37a85f5f"));
+      
+      return ["dados_para_o_mapa", "dados_para_nuvem"].includes(name);
+    });
+
+    // Intersection Observer para Fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+  </script>
+
+  <style>
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-10px);}
+      60% {transform: translateY(-5px);}
+    }
+  </style>
+</body>
+<div id="custom-d3-tooltip" style="position: fixed; display: none; background: white; border: 1px solid #ccc; padding: 10px; z-index: 2000; pointer-events: none; border-radius: 4px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); font-size: 12px; font-family: sans-serif;"></div>
+</html>
