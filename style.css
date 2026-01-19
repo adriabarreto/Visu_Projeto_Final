@@ -4,278 +4,151 @@
     --accent: #D63031; 
 }
 
-.black-ops-one-regular {
-  font-family: "Black Ops One", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.oswald-<uniquifier> {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-}
-
-.roboto-<uniquifier> {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
 }
 
 body {
     margin: 0; 
     background: var(--bg-light); 
-    color: #2d3436;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* PADRONIZAÇÃO DE FONTES */
+h1 {
+    font-family: "Black Ops One", system-ui;
+    font-size: 3.5rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+h2, h3 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #dbeaef;
+    text-align: justify;
+}
+
+/* SEÇÕES */
 section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  box-sizing: border-box;
-  scroll-snap-align: start;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease;
 }
 
 section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-section:nth-child(even) {
-  background: var(--bg-gray);
+    opacity: 1;
 }
 
 section:nth-child(even) {
     background: var(--bg-gray);
 }
 
-p {
-  text-align: justify;
-  color: #ffffff;
-  font-family:"Roboto", sans-serif;
-}
-  
-
-/* Seção principal */
-.hero {
-  min-height: 100vh;              /* ocupa a tela inteira */
-  display: flex;                  /* ativa flexbox */
-  justify-content: center;        /* centraliza horizontalmente */
-  align-items: center;            /* centraliza verticalmente */
-  text-align: center;
-}
-
-.hero h1 {
-  font-family: "Black Ops One", system-ui;
-  font-weight: 700; /* bold */
-}
-
-.pagina-hero .sticky-controls {
-  display: none;
-}
-
-/* Container do conteúdo */
+/* LAYOUT DE CONTEÚDO */
 .container {
-  max-width: 800px;               /* limita a largura */
-  margin: 0 auto;                 /* centraliza na página */
-  padding: 0 20px;                /* respiro em telas pequenas */
-}
-
-/* Título principal */
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
-  color: var(--accent);
-  line-height: 1.2;       
-}
-
-.scroll-indicator {
-  margin-top: 50px;
-  font-size: 2rem;
-  animation: bounce 2s infinite;
-}
-
-.pagina-vis .sticky-controls {
-  display: block;
-}
-
-/* Animação da seta */
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-}
-
-/* Seção de introdução */
-.intro {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* Container reutilizável */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-h2 {
-   font-family: "Oswald", sans-serif; 
-}
-
-/* Subtítulo */
-.intro h2 {
-  font-family: "Oswald", sans-serif;
-  font-weight: 300;
-  color:  #ffffff;
-  font-size: 2rem;
-}
-
-/* Parágrafo introdutório */
-.intro p {
-  font-size: 1.25rem;
-  margin-top: 30px;
-  line-height: 1.6;
-  color: #ffffff;
-}
-.intro-content {
-  text-align: center;
-  max-width: 800px;
-}
-
-.intro-subtitle {
-  font-weight: 300;
-  color: #E0E0E0;
-}
-
-.intro-text {
-  font-size: 1.25rem;
-  margin-top: 30px;
-  line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .content-wrapper {
-  display: grid;
-  grid-template-columns: 60% 40%; 
-  gap: 50px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
 }
 
-/* Card do gráfico */
 .chart-box {
-  background-color: #1E1E1E;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Texto à direita */
-.text-box {
-  text-align: center;
-  color: #ffffff;
-}
-
-.text-box h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #ffffff
-}
-
-.text-box p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #dbeaef;
-}
-
-.text-box,
-.text-side {
-  padding: 30px 40px;   /* ↑ aqui controla o “respiro” lateral */
-  box-sizing: border-box;
-}
-
-/* FILTROS */
+/* FILTROS (ALINHAMENTO HORIZONTAL) */
 .sticky-controls {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 15px;
-  background: #1E1E1E;
-  z-index: 9999;
-
-  /* ESCONDIDO NO INÍCIO */
-  opacity: 0;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Força horizontal */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 15px;
+    background: rgba(30, 30, 30, 0.9);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
     transition: opacity 0.5s ease;
 }
 
 .sticky-controls.is-visible {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
+/* Ajuste específico para os widgets do Observable */
 .filter-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.sticky-controls select {
-  color: #ffffff !important;
-  background: #2a2a2a !important;
-  border: 1px solid #444;
-  padding: 6px 10px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+
+.sticky-controls select, .sticky-controls form {
+    background: #2a2a2a !important;
+    color: white !important;
+    border-radius: 4px;
+    padding: 4px;
 }
 
-.sticky-controls select option {
-  color: #ffffff !important;
-  background-color: #2a2a2a;
-}
-
-.sticky-controls * {
-  color: #ffffff !important;
-}
-
-.sticky-controls select option:checked {
-  color: #ffffff;
-  background-color: #2a2a2a;
-}
-
-/* SCROLL INDICATOR */
+/* SETA */
 .scroll-indicator {
-  margin-top: 40px;
-  animation: bounce 2s infinite;
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+}
+
+/* Isso força qualquer div de tooltip criada pelo D3/Observable a flutuar no topo */
+div[style*="position: absolute"], 
+.tooltip, 
+[id*="tooltip"] {
+    z-index: 10000 !important;
+    pointer-events: none !important; /* Evita que o tooltip bloqueie o mouse */
 }
 
 @keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* RESPONSIVIDADE BÁSICA */
+@media (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .sticky-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
