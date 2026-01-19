@@ -4,6 +4,27 @@
     --accent: #D63031; 
 }
 
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-<uniquifier> {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.roboto-<uniquifier> {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
@@ -11,39 +32,43 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     margin: 0; 
     background: var(--bg-light); 
     color: #2d3436;
 }
 
 section {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-sizing: border-box;
-    scroll-snap-align: start; 
-    scroll-snap-stop: always;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-p {
-  text-align: justify;
-  color: #ffffff;
-}
-  
 section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section:nth-child(even) {
+  background: var(--bg-gray);
 }
 
 section:nth-child(even) {
     background: var(--bg-gray);
 }
+
+p {
+  text-align: justify;
+  color: #ffffff;
+  font-family:"Roboto", sans-serif;
+}
+  
 
 /* Seção principal */
 .hero {
@@ -55,6 +80,7 @@ section:nth-child(even) {
 }
 
 .hero h1 {
+  font-family: "Black Ops One", system-ui;
   font-weight: 700; /* bold */
 }
 
@@ -113,8 +139,13 @@ section:nth-child(even) {
   padding: 0 20px;
 }
 
+h2 {
+   font-family: "Oswald", sans-serif; 
+}
+
 /* Subtítulo */
 .intro h2 {
+  font-family: "Oswald", sans-serif;
   font-weight: 300;
   color:  #ffffff;
   font-size: 2rem;
@@ -196,6 +227,16 @@ section:nth-child(even) {
   padding: 15px;
   background: #1E1E1E;
   z-index: 9999;
+
+  /* ESCONDIDO NO INÍCIO */
+  opacity: 0;
+  pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.sticky-controls.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .filter-item {
@@ -215,8 +256,12 @@ section:nth-child(even) {
 }
 
 .sticky-controls select option {
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #2a2a2a;
+}
+
+.sticky-controls * {
+  color: #ffffff !important;
 }
 
 .sticky-controls select option:checked {

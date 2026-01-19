@@ -6,7 +6,15 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="pagina-vis">
@@ -43,10 +51,12 @@
 
       <div class="scroll-indicator">↓</div>
     </div>
+
   </section>
 
   <!-- Seção 2 - Grafico Conflitos Totais -->
-  <section>
+
+  <section class="menu-trigger">
       <div class="content-wrapper">
       <div class="chart-box">
         <div id="observablehq-grafOne-d0f5227e"></div>
@@ -63,7 +73,7 @@
   </section>
 
 <!-- Seção 3 - Conflitos por tipo -->
-  <section>
+  <section class="menu-trigger">
     <div class="content-wrapper">
 
       <div class="chart-box">
@@ -84,7 +94,7 @@
 
 
 <!-- Seção 4 - Conflitos com mais mortes -->
-  <section>
+  <section class="menu-trigger">
     <div class="content-wrapper">
 
       <div class="chart-box">
@@ -128,7 +138,7 @@
 </section>
 
 <!-- Nuvem -->
-<section>
+<section class="menu-trigger">
   <div class="content-wrapper">
 
     <div class="text-box">
@@ -150,7 +160,7 @@
 </section>
 
 <!-- Rede -->
-<section>
+<section class="menu-trigger">
   <div class="content-wrapper">
   
     <div class="chart-box">
@@ -211,22 +221,41 @@
       return ["dados_para_o_mapa", "dados_para_nuvem"].includes(name);
     });
 
-    // Intersection Observer para Fade-in
-    const observer = new IntersectionObserver((entries) => {
+ /* FADE-IN DAS SEÇÕES */
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
+    document.querySelectorAll("section").forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    /* CONTROLE DO MENU DE FILTROS */
+    const stickyMenu = document.querySelector(".sticky-controls");
+    const triggerSection = document.querySelectorAll("section")["menu-trigger"];
+
+    const menuObserver = new IntersectionObserver(
+      ([entry]) => {
+        stickyMenu.classList.toggle("is-visible", entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+    
+    if (triggerSection) {
+    const menuObserver = new IntersectionObserver(
+      ([entry]) => {
+        stickyMenu.classList.toggle("is-visible", entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+    
+    menuObserver.observe(triggerSection);
+    }
   </script>
 
-  <style>
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-      40% {transform: translateY(-10px);}
-      60% {transform: translateY(-5px);}
-    }
-  </style>
 </body>
 </html>
