@@ -7,163 +7,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* 1. MOTOR DE ROLAGEM (PÁGINA DE LIVRO) */
-    html {
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-    }
-
-    :root {
-      --bg-light: #ffffff;
-      --bg-gray: #f8f9fa;
-      --accent: #921f22; /* Voltei para o vermelho, mas pode mudar para o verde se preferir */
-    }
-
-    /* 2. BARRA DE FILTROS (FIXA) */
-    .sticky-controls {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid #ddd;
-      padding: 12px 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    /* 3. ESTRUTURA GERAL DAS SEÇÕES */
-    section {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      scroll-snap-align: start; 
-      scroll-snap-stop: always;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    section.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section:nth-child(even) { background: var(--bg-gray); }
-
-    /* CONTAINER PADRÃO (Lado a Lado) */
-    .content-wrapper {
-      display: grid;
-      grid-template-columns: 400px 700px; 
-      gap: 50px;
-      justify-content: center; 
-      align-items: center;
-      width: 100%;
-    }
-
-    .text-side { width: 400px; }
-    .viz-side {
-      width: 700px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-    }
-
-    /* 4. REFORMULAÇÃO TOTAL DA SEÇÃO DO MAPA */
-.full-width-section {
-  display: flex !important;
-  flex-direction: row !important; /* Força lado a lado */
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 5% !important; /* Margem de segurança nas laterais */
-}
-
-/* Ajuste para subir o conteúdo da seção do Mapa */
-/* Container do Mapa + Gráfico Inferior */
-.full-width-section .viz-side {
-  display: flex !important;
-  flex-direction: column !important; /* Empilha o mapa e o novo gráfico */
-  gap: 15px;                         /* Espaço entre eles */
-  justify-content: flex-start;
-  height: 80vh;                      /* Limita a altura total do conjunto */
-}
-
-/* Ajuste de altura para os dois elementos dividirem o espaço */
-#observablehq-grafSix-ca2ec83e { 
-  flex: 2; /* O mapa fica com a maior parte do espaço */
-  min-height: 0; 
-}
-
-/* Estilo para o novo gráfico abaixo do mapa */
-#observablehq-grafExtra-ca2ec83e { 
-  flex: 1; /* O gráfico de baixo fica menor que o mapa */
-  min-height: 0;
-  border-top: 1px solid #eee; /* Linha sutil para separar */
-  padding-top: 10px;
-
-}
-#observablehq-grafEigh-7db2f758 { 
-  min-height: 450px; 
-  width: 100%; 
-  display: block !important;
-}
-
-#observablehq-grafNine-37a85f5f { 
-  min-height: 450px; 
-  width: 100%; 
-  display: block !important;
-}
-
-
-    /* 5. RESPONSIVIDADE */
-    @media (max-width: 1100px) {
-      html { scroll-snap-type: none; }
-      .content-wrapper, .full-width-section .content-wrapper { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-        height: auto;
-      }
-      section { height: auto; min-height: 100vh; padding: 100px 20px; }
-      .text-side, .viz-side { width: 100% !important; }
-    }
-  </style>
 </head>
 
-<body class="pagina-hero">
+<body class="pagina-vis">
   <section class="hero">
     <div class="container">
       <h1>ESTAMOS VIVENDO EM TEMPOS DE PAZ?</h1>
       <div class="scroll-indicator">↓</div>
     </div>
   </section>
-</body>
 
-<body class="pagina-vis">
   <!-- Botões do filtro -->
   <div class="sticky-controls">
-    <div id="observablehq-viewof-periodo_selecionado-ca2ec83e"></div>
-    <div id="observablehq-viewof-métrica_ativa-ca2ec83e"></div>
-    <div id="observablehq-viewof-tipo_ativo-ca2ec83e"></div>
+    <div class="filter-item">
+      <div id="observablehq-viewof-periodo_selecionado-ca2ec83e"></div>
+    </div>
+    <div class="filter-item">
+      <div id="observablehq-viewof-métrica_ativa-ca2ec83e"></div>
+    </div>
+    <div class="filter-item">
+      <div id="observablehq-viewof-tipo_ativo-ca2ec83e"></div>
+    </div>
   </div>
 
   <!-- Seção 1 - Abertura -->
-  <section class="intro">
+  <section class="intro" >
     <div class="container">
       <h2>A Ilusão da Paz Perpétua</h2>
 
@@ -182,7 +50,6 @@
       <div class="content-wrapper">
       <div class="chart-box">
         <div id="observablehq-grafOne-d0f5227e"></div>
-        <div id="observablehq-grafTwo-f9d10b62"></div>
       </div>
 
       <div class="text-box">
@@ -264,7 +131,7 @@
 <section>
   <div class="content-wrapper">
 
-    <div class="text-side">
+    <div class="text-box">
       <h2>A Face da Violência</h2>
       <p>
         Quem são os arquitetos dessa desordem?
@@ -273,7 +140,8 @@
         e se alimentam mutuamente.
       </p>
     </div>
-
+    
+    <div class="chart-box">
     <div class="viz-side">
       <div id="observablehq-grafEigh-7db2f758"></div>
     </div>
@@ -285,11 +153,11 @@
 <section>
   <div class="content-wrapper">
   
-    <div class="viz-side">
+    <div class="chart-box">
       <div id="observablehq-grafNine-37a85f5f"></div>
     </div>
 
-    <div class="text-side">
+    <div class="text-box">
       <h2>Protagonistas do Caos</h2>
       <p>
         Quem são os grupos por trás desses registros? 

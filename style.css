@@ -1,7 +1,13 @@
 :root {
-    --bg-light: #ffffff;
-    --bg-gray: #f8f9fa;
-    --accent: #e63946; 
+    --bg-light: #121212;
+    --bg-gray: #1A1A1B;
+    --accent: #D63031; 
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 body {
@@ -9,6 +15,34 @@ body {
     margin: 0; 
     background: var(--bg-light); 
     color: #2d3436;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    box-sizing: border-box;
+    scroll-snap-align: start; 
+    scroll-snap-stop: always;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+p {
+  text-align: justify;
+  color: #ffffff;
+}
+  
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section:nth-child(even) {
+    background: var(--bg-gray);
 }
 
 /* Seção principal */
@@ -40,7 +74,7 @@ body {
   font-size: 3.5rem;
   margin-bottom: 10px;
   color: var(--accent);
-  line-height: 1.2;              
+  line-height: 1.2;       
 }
 
 .scroll-indicator {
@@ -82,7 +116,7 @@ body {
 /* Subtítulo */
 .intro h2 {
   font-weight: 300;
-  color: #636e72;
+  color:  #ffffff;
   font-size: 2rem;
 }
 
@@ -91,7 +125,7 @@ body {
   font-size: 1.25rem;
   margin-top: 30px;
   line-height: 1.6;
-  color: #2d3436;
+  color: #ffffff;
 }
 .intro-content {
   text-align: center;
@@ -100,7 +134,7 @@ body {
 
 .intro-subtitle {
   font-weight: 300;
-  color: #636e72;
+  color: #E0E0E0;
 }
 
 .intro-text {
@@ -121,29 +155,82 @@ body {
 
 /* Card do gráfico */
 .chart-box {
-  background-color: #ffffff;
+  background-color: #1E1E1E;
   border-radius: 16px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Texto à direita */
 .text-box {
-  text-align: left;
+  text-align: center;
+  color: #ffffff;
 }
 
 .text-box h3 {
   font-size: 1.8rem;
   margin-bottom: 15px;
+  color: #ffffff
 }
 
 .text-box p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #2d3436;
+  color: #dbeaef;
 }
 
+.text-box,
+.text-side {
+  padding: 30px 40px;   /* ↑ aqui controla o “respiro” lateral */
+  box-sizing: border-box;
+}
 
+/* FILTROS */
+.sticky-controls {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px;
+  background: #1E1E1E;
+  z-index: 9999;
+}
 
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.sticky-controls select {
+  color: #ffffff !important;
+  background: #2a2a2a !important;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.sticky-controls select option {
+  color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+.sticky-controls select option:checked {
+  color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+  margin-top: 40px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
