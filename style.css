@@ -108,12 +108,11 @@ section:nth-child(even) {
     pointer-events: auto;
 }
 
-/* Ajuste específico para os widgets do Observable */
+/* Ajuste para os widgets do Observable */
 .filter-item {
     display: flex;
     align-items: center;
 }
-
 
 .sticky-controls select, .sticky-controls form {
     background: #2a2a2a !important;
@@ -129,12 +128,26 @@ section:nth-child(even) {
     animation: bounce 2s infinite;
 }
 
-/* Isso força qualquer div de tooltip criada pelo D3/Observable a flutuar no topo */
-div[style*="position: absolute"], 
-.tooltip, 
-[id*="tooltip"] {
-    z-index: 10000 !important;
-    pointer-events: none !important; /* Evita que o tooltip bloqueie o mouse */
+#custom-d3-tooltip {
+   position: fixed; /* Usa fixed para seguir o mouse baseado na janela */
+    display: none;
+    pointer-events: none;
+    z-index: 10000;
+    background: white;
+    color: rgba(20, 20, 20, 0.95) !important;
+    padding: 10px;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+#custom-d3-tooltip table td.key {
+    color: rgba(0,0,0,0.5);
+    font-weight: bold;
+    padding-right: 8px;
+    font-size: 11px;
 }
 
 @keyframes bounce {
@@ -142,7 +155,7 @@ div[style*="position: absolute"],
     50% { transform: translateY(10px); }
 }
 
-/* RESPONSIVIDADE BÁSICA */
+/* Responsividade */
 @media (max-width: 768px) {
     .content-wrapper {
         grid-template-columns: 1fr;

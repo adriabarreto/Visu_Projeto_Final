@@ -11,6 +11,9 @@
 </head>
 
 <body class="pagina-vis">
+
+  <div id="custom-d3-tooltip"></div>
+
   <section class="hero">
     <div class="container">
       <h1>ESTAMOS VIVENDO EM TEMPOS DE PAZ?</h1>
@@ -84,7 +87,7 @@
         <p>
           Onde o custo humano é mais alto? Não se trata apenas da quantidade de batalhas, 
           mas da sua letalidade. Analisar a média de mortes e o tipo de evento nos permite
-          entender se estamos diante de combates militares tradicionais ou de ataques sistemáticos.
+          entender se estamos diante de combates militares tradicionais.
         </p>
       </div>
     </div>
@@ -129,7 +132,7 @@
       <div class="text-box">
         <h2>Protagonistas do Caos</h2>
         <p>
-          Quem são os grupos por trás desses registros? Esta nuvem destaca os atores com maior impacto no período selecionado.
+          Quem são os grupos por trás desses registros? Esta rede destaca os atores com maior impacto no período selecionado.
         </p>
       </div>
     </div>
@@ -140,8 +143,7 @@
       <h2>Afinal, estamos em Paz?</h2>
       <p>
         A resposta curta é: depende da sua definição de paz. Se a paz é apenas a ausência de uma guerra mundial,
-        os dados nos dão um conforto frágil. Mas se a paz é o direito de viver sem o medo da violência organizada,
-        os últimos 35 anos mostram que falhamos.
+        os dados nos dão um conforto frágil. A violência não sumiu; ela se adaptou.
       </p>
     </div>
   </section>
@@ -152,10 +154,12 @@
 
     const runtime = new Runtime();
     runtime.module(define, name => {
+      // Inputs/Filtros
       if (name === "viewof periodo_selecionado") return new Inspector(document.querySelector("#observablehq-viewof-periodo_selecionado-ca2ec83e"));
       if (name === "viewof métrica_ativa") return new Inspector(document.querySelector("#observablehq-viewof-métrica_ativa-ca2ec83e"));
       if (name === "viewof tipo_ativo") return new Inspector(document.querySelector("#observablehq-viewof-tipo_ativo-ca2ec83e"));
       
+      // Gráficos
       if (name === "grafSix") return new Inspector(document.querySelector("#observablehq-grafSix-ca2ec83e"));
       if (name === "textMap") return new Inspector(document.querySelector("#observablehq-textMap-ca2ec83e"));
       if (name === "grafSeven") return new Inspector(document.querySelector("#observablehq-grafSeven-adf0c5a8"));
@@ -170,32 +174,21 @@
       return ["dados_para_o_mapa", "dados_para_nuvem"].includes(name);
     });
 
-    const tooltipContainer = document.createElement("div");
-    tooltipContainer.id = "tooltip-container";
-    document.body.appendChild(tooltipContainer);
-
-    // Observer para Fade-in
+    // Fade-in Observer
     const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add("is-visible");
       });
     }, { threshold: 0.1 });
+    document.querySelectorAll("section").forEach(s => sectionObserver.observe(s));
 
-    document.querySelectorAll("section").forEach(section => sectionObserver.observe(section));
-
-    // Observer para o Menu de Filtros (Sticky)
+    // Sticky Menu Observer
     const stickyMenu = document.querySelector(".sticky-controls");
     const triggers = document.querySelectorAll(".menu-trigger");
-
     const menuObserver = new IntersectionObserver(entries => {
-      const isAnyTriggerVisible = entries.some(e => e.isIntersecting);
-      if (isAnyTriggerVisible) {
-        stickyMenu.classList.add("is-visible");
-      } else {
-        stickyMenu.classList.remove("is-visible");
-      }
+      const isAnyVisible = entries.some(e => e.isIntersecting);
+      stickyMenu.classList.toggle("is-visible", isAnyVisible);
     }, { threshold: 0.1 });
-
     triggers.forEach(t => menuObserver.observe(t));
   </script>
 </body>
